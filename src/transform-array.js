@@ -1,9 +1,32 @@
 module.exports = function transform(arr) {
-  const comands = ['--discard-prev', '--double-prev', '--double-next', '--discard-next']
+  
+  if(!Array.isArray(arr)) throw new Error ('not arr') 
 
-  if(!Array.isArray(arr)) throw new Error('not arr')
-  if(!arr.includes(comands)) return arr
+  let result = []
+  const length = arr.length
 
-  console.log(arr)
+  for (let i = 0; i < length; i++ ) {
+    switch (arr[i]) {
+      case '--discard-next': i++
+        break
+      case '--discard-prev' :
+        if(i !== 0 && arr[i - 2] !== '--discard-next') {
+          result.pop()
+        }
+          break
+      case '--double-next':
+        if (i < length - 1) {
+          result.push(arr[i + 1])
+        }
+          break
+      case '--double-prev':
+        if(i !==0 && arr[i - 2] !== '--discard-next') {
+          result.push(arr[i - 1])
+        }
+          break
+      default: result.push(arr[i])
+    }
+  }
 
+  return result
 }

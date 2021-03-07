@@ -1,5 +1,4 @@
 module.exports = function repeater(str, options) {
-  
   options.repeatTimes = options.repeatTimes || 1
   options.separator = options.separator || '+'
   options.addition = options.addition || ''
