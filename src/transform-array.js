@@ -9,7 +9,7 @@ module.exports = function transform(arr) {
     switch (arr[i]) {
       case '--discard-next': i++
         break
-      case '--discard-prev' :
+      case '--discard-prev':
         if(i !== 0 && arr[i - 2] !== '--discard-next') {
           result.pop()
         }
