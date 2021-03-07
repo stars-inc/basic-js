@@ -1,17 +1,26 @@
 module.exports = function repeater(str, options) {
-  const {repeatTimes = 1,
-    separator = '+',
-    addition = '',
-    additionRepeatTimes = 1,
-    additionSeparator = '|'} = options
-
-  let first = [], second = []
-
-  const strArr = first.fill(str, repeatTimes)
-  const strDev = second.fill(addition, additionRepeatTimes).join(additionSeparator)
-
-  return strArr.map(el => el + strDev).join(separator)
-
-  // processing...
-}
   
+  options.repeatTimes = options.repeatTimes || 1
+  options.separator = options.separator || '+'
+  options.addition = options.addition || ''
+  options.additionTimes = options.additionTimes || 1
+  options.additionSeparator = options.additionSeparator || '||'
+  
+  const first = [], second = []
+
+  const times = options.repeatTimes
+  const addTimes = options.additionRepeatTimes
+
+  for(let i = 0; i < times; i++) {
+    first.push(str)
+  }
+
+  for(let i = 0; i < addTimes; i++) {
+    second.push(options.addition)
+  }
+
+  const secondStr = second.join(options.additionSeparator)
+  const concat = first.map(el => el + secondStr).join(options.separator)
+
+  return concat
+} 
