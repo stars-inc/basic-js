@@ -3,7 +3,7 @@ module.exports = function repeater(str, options) {
   options.separator = options.separator || '+'
   options.addition = options.addition || ''
   options.additionTimes = options.additionTimes || 1
-  options.additionSeparator = options.additionSeparator || '||'
+  options.additionSeparator = options.additionSeparator || '|'
   
   const first = [], second = []
 

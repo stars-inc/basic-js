@@ -5,6 +5,19 @@ class VigenereCipheringMachine {
    
   encrypt(text, key) {
     if(!text || !key) throw new Error()
+
+    let encrypt = ''
+
+    for(let i = 0; i < text.length; i++) {
+      if(text[i] === '') {
+        encrypt += text[i]
+      } else {
+        String.fromCharCode(((text.charCodeAt(i) + key.charCodeAt(i) % 26) + 26))
+      }
+    }
+
+    return encrypt
+
   }    
   decrypt(text, key) {
     if(!text || !key) throw new Error()
@@ -12,6 +25,3 @@ class VigenereCipheringMachine {
 }
 
 module.exports = VigenereCipheringMachine
-
-// https://ru.wikipedia.org/wiki/%D0%A8%D0%B8%D1%84%D1%80_%D0%92%D0%B8%D0%B6%D0%B5%D0%BD%D0%B5%D1%80%D0%B0#JavaScript
-// processing ...!&#?
