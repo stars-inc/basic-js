@@ -6,19 +6,22 @@ class VigenereCipheringMachine {
   encrypt(text, key) {
     if(!text || !key) throw new Error()
 
-    let encrypt = ''
+    let alphabet = [], i = 65
 
-    for(let i = 0; i < text.length; i++) {
-      if(text[i] === '') {
-        encrypt += text[i]
-      } else {
-        String.fromCharCode(((text.charCodeAt(i) + key.charCodeAt(i) % 26) + 26))
-      }
+    while(i <= 90) { // create alphebet
+      alphabet.push(String.fromCodePoint(i))
+      i++
     }
 
-    return encrypt
+    const getCodeFromPhrase = text.toUpperCase().split('').map(char => char.charCodeAt())
+    const getCodeFromKey = key.toUpperCase().split('').map(char => char.charCodeAt())
+    
+    console.log(alphabet, '==========>>>>>')
+    console.log(getCodeFromPhrase, 'Phrase CODE')
+    console.log(getCodeFromKey, 'KEY CODE')
 
-  }    
+  }
+
   decrypt(text, key) {
     if(!text || !key) throw new Error()
   }
