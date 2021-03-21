@@ -1,6 +1,5 @@
 module.exports = function repeater(str, options) {
-  options.addition = options.addition || ''
-
+  
   const first = [], second = []
 
   const times = options.repeatTimes || 1
